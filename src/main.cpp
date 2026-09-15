@@ -18,6 +18,10 @@
 
 static void quit_func(int code)
 {
+    // Release SDL/TTF resources before shutting down the libraries:
+    // Video is a global and its destructor would otherwise call into
+    // SDL/TTF again during exit(), after they've already been torn down.
+    video.close();
     TTF_Quit();
     SDL_Quit();
     exit(code);
