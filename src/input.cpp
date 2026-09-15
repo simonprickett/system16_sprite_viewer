@@ -84,10 +84,12 @@ void Input::handle_key(SDL_Keysym* keysym, bool is_pressed)
             break;
 
         case SDLK_KP_PLUS:
+        case SDLK_EQUALS:
             keys[ZOOM_IN] = is_pressed;
             break;
 
         case SDLK_KP_MINUS:
+        case SDLK_MINUS:
             keys[ZOOM_OUT] = is_pressed;
             break;
 
