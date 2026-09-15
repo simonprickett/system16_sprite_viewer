@@ -49,6 +49,26 @@ It's possible to create your own configuration files for your favourite titles. 
 
 The latest set of configuration files can be found [here](https://github.com/djyt/system16_sprite_viewer/tree/main/res/config), which may be newer than those bundled with the release.
 
+## Building on macOS
+
+Install dependencies via [Homebrew](https://brew.sh):
+
+```
+brew install sdl2-compat sdl2_ttf boost
+```
+
+Then configure and build with the bundled `osx.cmake` target:
+
+```
+mkdir build && cd build
+cmake ../cmake -DTARGET=osx.cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+cmake --build .
+```
+
+The `-DCMAKE_POLICY_VERSION_MINIMUM=3.5` flag is only needed because the project's minimum CMake version predates policy changes in newer CMake releases; it does not affect the build itself.
+
+The resulting `s16_viewer` binary looks for rom/palette paths relative to the current working directory, so run it from the `build` directory (or copy the binary alongside your `roms` directory and config files).
+
 ## Contributing
 
 - Found something cool? Feel free to start a thread in the [Discussions](https://github.com/djyt/system16_sprite_viewer/discussions) area.
